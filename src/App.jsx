@@ -321,7 +321,7 @@ export default function App() {
     }).catch(err => console.log('Booking lead sync note:', err.message));
 
     // Trigger Direct WhatsApp Inquiry to Owner
-    const message = `*NEW WEBSITE BOOKING INQUIRY*%0A%0A` +
+    const message = `*BOOKING INQUIRY*%0A%0A` +
       `👤 *Name:* ${encodeURIComponent(name)}%0A` +
       `📞 *Phone:* ${encodeURIComponent(phone)}%0A` +
       `🚘 *Requirement:* ${encodeURIComponent(service)}%0A%0A` +
