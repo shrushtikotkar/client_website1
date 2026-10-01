@@ -1,7 +1,6 @@
 import React, { useState, useEffect } from 'react';
 import Services from './components/Services';
 import FleetShowcase from './components/FleetShowcase';
-import AdminVehicleUpload from './components/AdminVehicleUpload';
 import { 
   Phone, 
   Clock, 
@@ -373,24 +372,24 @@ export default function App() {
     <div className="min-h-screen font-sans bg-slate-950 text-slate-100 flex flex-col justify-between selection:bg-red-600 selection:text-white">
       
       {/* TOP ANNOUNCEMENT BAR */}
-      <div className="bg-gradient-to-r from-red-950 via-rose-950 to-red-950 text-rose-200 text-xs py-2.5 px-4 border-b border-red-900/50">
-        <div className="max-w-7xl mx-auto flex flex-col sm:flex-row justify-between items-center gap-2">
-          <div className="flex items-center space-x-3 font-medium">
-            <span className="flex items-center gap-1.5 text-red-400 font-bold bg-red-900/40 px-2.5 py-0.5 rounded-full border border-red-800/40">
+      <div className="bg-gradient-to-r from-red-950 via-rose-950 to-red-950 text-rose-200 text-xs py-2 px-3 sm:px-4 border-b border-red-900/50">
+        <div className="max-w-7xl mx-auto flex flex-col md:flex-row justify-between items-center gap-2">
+          <div className="flex flex-wrap items-center justify-center md:justify-start gap-2 sm:gap-3 font-medium text-[11px] sm:text-xs">
+            <span className="flex items-center gap-1.5 text-red-400 font-bold bg-red-900/40 px-2.5 py-0.5 rounded-full border border-red-800/40 shrink-0">
               <Clock className="w-3.5 h-3.5" /> 24/7 Available
             </span>
-            <span className="hidden md:inline text-red-800">|</span>
-            <a href={`mailto:${CONTACT_INFO.email}`} className="hidden md:flex items-center gap-1.5 hover:text-white transition">
-              <Mail className="w-3.5 h-3.5 text-red-400" /> {CONTACT_INFO.email}
+            <span className="hidden sm:inline text-red-800">|</span>
+            <a href={`mailto:${CONTACT_INFO.email}`} className="flex items-center gap-1.5 hover:text-white transition text-rose-200 bg-red-900/20 sm:bg-transparent px-2.5 py-0.5 sm:px-0 sm:py-0 rounded-full sm:rounded-none border border-red-800/30 sm:border-0">
+              <Mail className="w-3.5 h-3.5 text-red-400 shrink-0" /> {CONTACT_INFO.email}
             </a>
           </div>
           
-          <div className="flex items-center gap-4 text-xs font-semibold">
-            <a href="tel:7972738737" className="hover:text-red-300 flex items-center gap-1 bg-red-900/30 px-3 py-1 rounded-full border border-red-800/30">
-              <Phone className="w-3 h-3 text-red-400" /> Amol: 7972738737
+          <div className="flex flex-wrap items-center justify-center gap-2 sm:gap-3 text-[11px] sm:text-xs font-semibold">
+            <a href="tel:7972738737" className="hover:text-red-300 flex items-center gap-1 bg-red-900/30 px-2.5 py-1 rounded-full border border-red-800/30">
+              <Phone className="w-3 h-3 text-red-400 shrink-0" /> Amol: 7972738737
             </a>
-            <a href="tel:7385514325" className="hover:text-red-300 flex items-center gap-1 bg-red-900/30 px-3 py-1 rounded-full border border-red-800/30">
-              <Phone className="w-3 h-3 text-red-400" /> Arvind: 7385514325
+            <a href="tel:7385514325" className="hover:text-red-300 flex items-center gap-1 bg-red-900/30 px-2.5 py-1 rounded-full border border-red-800/30">
+              <Phone className="w-3 h-3 text-red-400 shrink-0" /> Arvind: 7385514325
             </a>
           </div>
         </div>
@@ -426,7 +425,7 @@ export default function App() {
             </div>
 
             <div className="lg:hidden">
-              <button onClick={() => setMobileMenuOpen(!mobileMenuOpen)} className="p-2 text-slate-200">
+              <button onClick={() => setMobileMenuOpen(!mobileMenuOpen)} className="p-2 text-slate-200" aria-label="Toggle navigation menu">
                 {mobileMenuOpen ? <X className="w-6 h-6" /> : <Menu className="w-6 h-6" />}
               </button>
             </div>
@@ -435,12 +434,30 @@ export default function App() {
 
         {/* MOBILE MENU */}
         {mobileMenuOpen && (
-          <div className="lg:hidden bg-slate-900 border-b border-slate-800 px-4 py-6 space-y-4">
-            <a href="#home" onClick={() => setMobileMenuOpen(false)} className="block font-bold text-slate-200">Home</a>
-            <a href="#services" onClick={() => setMobileMenuOpen(false)} className="block font-bold text-slate-200">Services</a>
-            <a href="#fleet" onClick={() => setMobileMenuOpen(false)} className="block font-bold text-slate-200">Fleet Showcase</a>
-            <a href="#booking" onClick={() => setMobileMenuOpen(false)} className="block font-bold text-slate-200">Quick Booking</a>
-            <a href="https://wa.me/919823841476" className="block w-full text-center bg-emerald-600 text-white font-bold py-3 rounded-xl">WhatsApp Inquiry</a>
+          <div className="lg:hidden bg-slate-900 border-b border-slate-800 px-5 py-6 space-y-4 animate-fadeIn">
+            <a href="#home" onClick={() => setMobileMenuOpen(false)} className="block font-bold text-slate-200 hover:text-red-400 transition">Home</a>
+            <a href="#services" onClick={() => setMobileMenuOpen(false)} className="block font-bold text-slate-200 hover:text-red-400 transition">Services</a>
+            <a href="#fleet" onClick={() => setMobileMenuOpen(false)} className="block font-bold text-slate-200 hover:text-red-400 transition">Fleet Showcase</a>
+            <a href="#booking" onClick={() => setMobileMenuOpen(false)} className="block font-bold text-slate-200 hover:text-red-400 transition">Quick Booking</a>
+            <a href="#contact-details" onClick={() => setMobileMenuOpen(false)} className="block font-bold text-slate-200 hover:text-red-400 transition">Contact</a>
+            
+            <div className="pt-3 border-t border-slate-800 space-y-2">
+              <a href={`mailto:${CONTACT_INFO.email}`} className="flex items-center gap-2 text-xs font-semibold text-rose-300 hover:text-white bg-slate-800/80 p-2.5 rounded-xl border border-slate-700/60 transition">
+                <Mail className="w-4 h-4 text-red-400 shrink-0" /> {CONTACT_INFO.email}
+              </a>
+              <div className="grid grid-cols-2 gap-2">
+                <a href="tel:7972738737" className="flex items-center justify-center gap-1.5 text-xs font-semibold text-slate-300 hover:text-white bg-slate-800/80 p-2 rounded-xl border border-slate-700/60 transition">
+                  <Phone className="w-3.5 h-3.5 text-red-400 shrink-0" /> Amol
+                </a>
+                <a href="tel:7385514325" className="flex items-center justify-center gap-1.5 text-xs font-semibold text-slate-300 hover:text-white bg-slate-800/80 p-2 rounded-xl border border-slate-700/60 transition">
+                  <Phone className="w-3.5 h-3.5 text-red-400 shrink-0" /> Arvind
+                </a>
+              </div>
+            </div>
+
+            <a href="https://wa.me/919823841476" target="_blank" rel="noreferrer" className="flex items-center justify-center gap-2 w-full text-center bg-emerald-600 hover:bg-emerald-500 text-white font-bold py-3 rounded-xl shadow-lg shadow-emerald-900/30 transition">
+              WhatsApp Inquiry
+            </a>
           </div>
         )}
       </nav>
@@ -499,13 +516,6 @@ export default function App() {
             </div>
           </div>
 
-        </div>
-      </section>
-
-      {/* ADMIN PHOTO & VEHICLE UPLOAD SECTION */}
-      <section className="bg-slate-950 py-12 border-b border-slate-800/80">
-        <div className="max-w-7xl mx-auto px-4">
-          <AdminVehicleUpload onVehicleAdded={fetchVehicles} />
         </div>
       </section>
 
@@ -719,9 +729,15 @@ export default function App() {
             S
           </div>
           <h3 className="text-2xl font-black mb-2">Sadguru Tours And Travels</h3>
-          <p className="text-xs text-slate-400 mb-6 max-w-md mx-auto">
-            Contact Amol Rothe (<a href="tel:7972738737" className="text-red-400 underline">7972738737</a>) or Arvind Rothe (<a href="tel:7385514325" className="text-red-400 underline">7385514325</a>) for immediate ride allocation across India.
+          <p className="text-sm text-slate-400 mb-3 max-w-md mx-auto">
+            Contact Amol Rothe (<a href="tel:7972738737" className="text-red-400 hover:underline">7972738737</a>) or Arvind Rothe (<a href="tel:7385514325" className="text-red-400 hover:underline">7385514325</a>) for immediate ride allocation across India.
           </p>
+          <div className="flex items-center justify-center gap-2 text-sm text-rose-300 mb-6">
+            <Mail className="w-4 h-4 text-red-400 shrink-0" />
+            <a href={`mailto:${CONTACT_INFO.email}`} className="hover:text-white underline transition">
+              {CONTACT_INFO.email}
+            </a>
+          </div>
           <div className="text-xs text-slate-600 border-t border-slate-900 pt-8">
             &copy; {new Date().getFullYear()} Sadguru Tours And Travels. All rights reserved.
           </div>
